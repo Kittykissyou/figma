@@ -1,0 +1,130 @@
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  overflow-x: hidden;
+}
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+p {
+  font-family: 'Graphik';
+  font-style: normal;
+}
+a,
+a:visited {
+  font-family: 'Graphik';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 28px;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+  color: rgb(240, 240, 155);
+}
+ul li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+
+$maxWidth: 1777; //ширина по макету
+
+@mixin adaptiv-font($pcSize, $mobSize) {
+  $addSize: $pcSize - $mobSize;
+  $maxWidth: $maxWidth - 320;
+  font-size: calc(
+    #{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth})
+  );
+}
+//@include adaptiv-font(, )
+@mixin adaptiv-position($property, $proc) {
+  #{$property}: 100vw/100 * $proc;
+}
+//@include adaptiv-font(, )
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+@mixin adaptiv-background($pcSize, $mobSize) {
+  $addSize: $pcSize - $mobSize;
+  $maxWidth: $maxWidth - 320;
+  height: calc(
+    #{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth})
+  );
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Graphik';
+  src: url('../fonts/GraphikBold.otf'), url('../fonts/GraphikRegular.otf');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Graphik';
+  src: url('../fonts/GraphikRegular.otf');
+  font-weight: 400;
+}
+/*--------------------*/
