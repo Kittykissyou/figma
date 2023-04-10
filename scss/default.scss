@@ -85,7 +85,7 @@ img {
 
 $maxWidth: 1777; //ширина по макету
 
-@mixin adaptiv-font($pcSize, $mobSize) {
+@mixin adaptive-font($pcSize, $mobSize) {
   $addSize: $pcSize - $mobSize;
   $maxWidth: $maxWidth - 320;
   font-size: calc(
@@ -93,7 +93,7 @@ $maxWidth: 1777; //ширина по макету
   );
 }
 //@include adaptiv-font(, )
-@mixin adaptiv-position($property, $proc) {
+@mixin adaptive-position($property, $proc) {
   #{$property}: 100vw/100 * $proc;
 }
 //@include adaptiv-font(, )
@@ -101,7 +101,7 @@ $maxWidth: 1777; //ширина по макету
   display: flex;
   flex-direction: column;
 }
-@mixin adaptiv-background($pcSize, $mobSize) {
+@mixin adaptive-heigth($pcSize, $mobSize) {
   $addSize: $pcSize - $mobSize;
   $maxWidth: $maxWidth - 320;
   height: calc(

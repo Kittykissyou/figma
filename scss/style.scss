@@ -12,10 +12,14 @@
   display: flex;
   justify-content: center;
   z-index: 99;
-  min-height: 100%;
+  min-height: 100vh;
   width: 100vw;
-  background: rgb(119, 136, 153, 0.7);
+
+  top: 0;
+
+  background: rgb(0, 0, 0, 0.6);
 }
+
 .mod-window {
   position: absolute;
   z-index: 100;
@@ -51,7 +55,7 @@
       .icon-close {
         margin-top: 10%;
         color: white;
-        @include adaptiv-font(20, 2);
+        @include adaptive-font(20, 2);
       }
     }
   }
@@ -59,9 +63,14 @@
 // модальное окно
 ._container {
   margin: 0 16% 0 16%;
+  @media (max-width: 760px) {
+    margin: 0 4% 0 4%;
+    width: 92%;
+  }
   width: 68%;
   position: relative;
   z-index: 2;
+  overflow: visible;
 }
 //реюз
 .doc-btn {
@@ -69,7 +78,7 @@
   border-radius: 15% / 50%;
   font-family: 'Graphik';
   font-style: normal;
-  @include adaptiv-font(20, 5);
+  @include adaptive-font(20, 5);
   color: white;
 }
 .doc-btn:hover {
@@ -83,32 +92,130 @@
     position: absolute;
     width: 100%;
     @media (max-width: 760px) {
-      @include adaptiv-background(930, 750);
+      @include adaptive-heigth(930, 750);
       width: 100%;
       object-fit: cover;
     }
   }
   .header__content {
     padding: 3.5% 0 0 0;
+
     @include flex-column;
     .header__head {
       display: flex;
       justify-content: space-between;
-      @include adaptiv-position(padding-left, 2);
-      @include adaptiv-position(padding-right, 2);
-      a {
-        @include adaptiv-font(15, 5);
+
+      @media (max-width: 760px) {
+        justify-content: end;
       }
 
+      @include adaptive-position(padding-left, 2);
+      @include adaptive-position(padding-right, 2);
+      a {
+        @include adaptive-font(15, 5);
+      }
+      .header__burger {
+        display: none;
+        position: relative;
+        z-index: 101;
+        @media (max-width: 760px) {
+          background: rgb(0, 0, 0, 0);
+          @include flex-column;
+          align-items: end;
+          gap: 20%;
+
+          @include adaptive-heigth(25, 16);
+          @include adaptive-position(width, 6.3);
+
+          div {
+            background: white;
+            height: 12%;
+            transition: width 0.3s linear;
+            transition: transform 0.3s linear;
+          }
+          .burger__line1 {
+            width: 100%;
+          }
+          .burger__line2 {
+            width: 70%;
+          }
+          .burger__line3 {
+            width: 50%;
+          }
+        }
+      }
+      ._burger-active {
+        div {
+          background: black;
+        }
+
+        .burger__line1 {
+          width: 75%;
+          transform: rotate(45deg) translateY(350%);
+        }
+        .burger__line2 {
+          transform: scale(0);
+        }
+        .burger__line3 {
+          width: 75%;
+          transform: rotate(-45deg) translateY(-350%);
+        }
+      }
+      .header__sidebar {
+        position: absolute;
+        z-index: 100;
+        top: 0;
+        right: -4.5%;
+
+        background: white;
+        height: 100vh;
+        width: 286px;
+      }
       .header__menu {
-        @include adaptiv-position(width, 24);
+        @include adaptive-position(width, 24);
         display: flex;
         justify-content: space-around;
+        @media (max-width: 760px) {
+          width: 100%;
+          height: 70%;
+          margin-top: 25%;
+
+          flex-direction: column;
+          align-items: center;
+          display: none;
+          a {
+            color: black;
+            font-size: 20px;
+          }
+        }
       }
       .header__socials {
-        @include adaptiv-position(width, 9.6);
+        @include adaptive-position(width, 9.6);
         display: flex;
         justify-content: space-between;
+        @media (max-width: 760px) {
+          @include adaptive-position(width, 30);
+          a {
+            @include adaptive-font(35, 22);
+          }
+          margin-right: 25%;
+        }
+        @media (max-width: 417px) {
+          display: none;
+        }
+      }
+    }
+    ._burger-soc {
+      @media (max-width: 417px) {
+        display: flex;
+        margin-top: 5%;
+        width: 100%;
+        height: 15%;
+        justify-content: space-around;
+        a {
+          color: black;
+          @include adaptive-font(35, 22);
+        }
       }
     }
     .header__body {
@@ -123,18 +230,18 @@
       }
       .header__title {
         font-weight: 700;
-        @include adaptiv-font(74, 20);
+        @include adaptive-font(74, 20);
         line-height: 113%;
       }
       .header-subtitle {
-        @include adaptiv-position(margin-top, 1.5);
+        @include adaptive-position(margin-top, 1.5);
         font-weight: 400;
-        @include adaptiv-font(28, 7.5);
+        @include adaptive-font(28, 7.5);
         line-height: 142%;
       }
       button {
-        @include adaptiv-position(margin-top, 4.8);
-        @include adaptiv-position(width, 13);
+        @include adaptive-position(margin-top, 4.8);
+        @include adaptive-position(width, 13);
 
         font-weight: 400;
         padding: 1.3% 0px;
