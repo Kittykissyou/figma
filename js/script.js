@@ -66,3 +66,59 @@ const burgerTrans = () => {
 };
 burger.addEventListener('click', burgerTrans);
 // бургер
+// слайдер
+const sliderData = [
+  {
+    title: 'standart',
+    subtitle: 'Organize across all apps by hand',
+    price: '10',
+  },
+  {
+    title: 'business',
+    subtitle: 'Organize across all apps by hand',
+    price: '99',
+  },
+  {
+    title: 'free',
+    subtitle: 'Organize across all apps by hand',
+    price: '0',
+  },
+];
+const sliderContainer = document.querySelector('.slider__container');
+const slides = sliderContainer.children;
+//
+const slide = document.querySelector('.slide');
+slide.style.left = `-${
+  (parseInt(getComputedStyle(slide).width) /
+    1.2 /
+    parseInt(getComputedStyle(sliderContainer).width)) *
+  100
+}%`;
+//
+for (let i = 1; i < sliderData.length; i++) {
+  const slideCopy = slide.cloneNode(true);
+  slideCopy.style.left = '';
+  const slideTitle = slideCopy.querySelector('.slide__title');
+  slideTitle.innerHTML = `${sliderData[i].title}`;
+  const slideSubTitle = slideCopy.querySelector('.slide__subtitle');
+  slideSubTitle.innerHTML = `${sliderData[i].subtitle}`;
+  const slidePrice = slideCopy.querySelector('.slide__num');
+  slidePrice.innerHTML = `${sliderData[i].price}`;
+  sliderContainer.append(slideCopy);
+
+  slideCopy.style.left = `${
+    ((parseInt(getComputedStyle(slideCopy.previousElementSibling).left) +
+      parseInt(getComputedStyle(slideCopy.previousElementSibling).width)) /
+      parseInt(getComputedStyle(sliderContainer).width)) *
+      100 +
+    10
+  }%`;
+  if (
+    slideCopy.previousElementSibling.className !==
+    'slider__slide slide _activeSlide'
+  ) {
+    slideCopy.classList.toggle('_activeSlide');
+  }
+}
+
+//слайдер

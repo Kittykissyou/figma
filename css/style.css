@@ -232,6 +232,30 @@ h6 {
   width: 9.6vw;
 }
 
+.block-header {
+  font-weight: 400;
+  color: white;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2vw;
+}
+.block-header .block-header__title {
+  font-size: calc(
+    20px + 28 * ((100vw - 320px) / 1457)
+  );
+}
+.block-header .block-header__subtitle {
+  font-size: calc(
+    12px + 16 * ((100vw - 320px) / 1457)
+  );
+}
+
 .header {
   position: relative;
   height: calc(
@@ -509,6 +533,148 @@ h6 {
     line-height: 20px;
     letter-spacing: 0.2px;
   }
+}
+
+.body__pricing {
+  background: #252b42;
+}
+.body__pricing .pricing__content {
+  padding: 5.5% 0 5.5% 0;
+}
+.body__pricing .pricing__content .pricing__slider {
+  padding: 7% 0 0 0;
+}
+.body__pricing .pricing__content .pricing__slider .slider__container {
+  height: calc(
+    50px + 285 * ((100vw - 320px) / 1457)
+  );
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+.body__pricing .pricing__content .pricing__slider .slider__slide {
+  position: absolute;
+  height: 80%;
+  padding: 2% 0 2% 0;
+  top: 10%;
+  width: 40vw;
+  background: white;
+  border-radius: 1%/2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.body__pricing .pricing__content .pricing__slider .slider__slide .slide__title {
+  font-size: calc(
+    5px + 15 * ((100vw - 320px) / 1457)
+  );
+  font-weight: 700;
+  height: calc(
+    14px + 14 * ((100vw - 320px) / 1457)
+  );
+  text-transform: uppercase;
+}
+.body__pricing .pricing__content .pricing__slider .slider__slide .slide__subtitle {
+  font-size: calc(
+    4px + 12 * ((100vw - 320px) / 1457)
+  );
+  font-weight: 400;
+  height: calc(
+    12px + 11 * ((100vw - 320px) / 1457)
+  );
+}
+.body__pricing .pricing__content .pricing__slider .slider__slide .slide__price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.body__pricing .pricing__content .pricing__slider .slider__slide .slide__price .slide__num {
+  font-size: calc(
+    19px + 55 * ((100vw - 320px) / 1457)
+  );
+  font-weight: 700;
+}
+.body__pricing .pricing__content .pricing__slider .slider__slide .slide__price .slide__permonth {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 100%;
+}
+.body__pricing .pricing__content .pricing__slider .slider__slide .slide__price .slide__permonth .slide__baks {
+  font-size: calc(
+    5px + 15 * ((100vw - 320px) / 1457)
+  );
+  font-weight: 700;
+}
+.body__pricing .pricing__content .pricing__slider .slider__slide .slide__price .slide__permonth .slide__per-month {
+  font-size: calc(
+    4px + 12 * ((100vw - 320px) / 1457)
+  );
+  font-weight: 400;
+}
+.body__pricing .pricing__content .pricing__slider .slider__slide .slide__feature {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 90%;
+}
+.body__pricing .pricing__content .pricing__slider .slider__slide .slide__feature .slide__pr-feature {
+  font-weight: 400;
+  font-size: calc(
+    5px + 7 * ((100vw - 320px) / 1457)
+  );
+}
+.body__pricing .pricing__content .pricing__slider .slider__slide .slider__btn {
+  padding: 2% 4%;
+  font-weight: 400;
+  font-size: calc(
+    3px + 17 * ((100vw - 320px) / 1457)
+  );
+}
+.body__pricing .pricing__content .pricing__slider ._activeSlide {
+  background: #2091f9;
+  height: 100%;
+  top: 0;
+}
+.body__pricing .pricing__content .pricing__slider ._activeSlide .slider__btn {
+  background: white;
+  color: #2091f9;
+}
+.body__pricing .pricing__content .pricing__slider .slider__btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.body__contact-us {
+  height: calc(
+    787px + 419 * ((100vw - 320px) / 1457)
+  );
 }
 
 .footer {

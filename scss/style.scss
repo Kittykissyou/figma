@@ -88,6 +88,20 @@
   justify-content: space-between;
   @include adaptive-position(width, 9.6);
 }
+.block-header {
+  font-weight: 400;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  @include adaptive-position(gap, 2);
+  .block-header__title {
+    @include adaptive-font(48, 20);
+  }
+  .block-header__subtitle {
+    @include adaptive-font(28, 12);
+  }
+}
 //реюз
 //хедер
 .header {
@@ -290,6 +304,107 @@
   }
 }
 //хедер
+//боди
+//pricing
+.body__pricing {
+  background: #252b42;
+
+  .pricing__content {
+    padding: 5.5% 0 5.5% 0;
+    .pricing__slider {
+      padding: 7% 0 0 0;
+
+      .slider__container {
+        @include adaptive-heigth(335, 50);
+        width: 100%;
+        position: relative;
+        margin: 0 auto;
+      }
+
+      .slider__slide {
+        position: absolute;
+        height: 80%;
+        padding: 2% 0 2% 0;
+        top: 10%;
+        @include adaptive-position(width, 40);
+        background: white;
+        border-radius: 1%/2%;
+        @include flex-column;
+        justify-content: space-between;
+        align-items: center;
+        .slide__title {
+          @include adaptive-font(20, 5);
+          font-weight: 700;
+          @include adaptive-heigth(28, 14);
+          text-transform: uppercase;
+        }
+        .slide__subtitle {
+          @include adaptive-font(16, 4);
+          font-weight: 400;
+          @include adaptive-heigth(23, 12);
+        }
+        .slide__price {
+          display: flex;
+          align-items: center;
+          .slide__num {
+            @include adaptive-font(74, 19);
+            font-weight: 700;
+          }
+          .slide__permonth {
+            @include flex-column;
+            justify-content: space-around;
+            height: 100%;
+
+            .slide__baks {
+              @include adaptive-font(20, 5);
+              font-weight: 700;
+            }
+            .slide__per-month {
+              @include adaptive-font(16, 4);
+
+              font-weight: 400;
+            }
+          }
+        }
+        .slide__feature {
+          display: flex;
+          justify-content: space-between;
+          width: 90%;
+          .slide__pr-feature {
+            font-weight: 400;
+            @include adaptive-font(12, 5);
+          }
+        }
+        .slider__btn {
+          padding: 2% 4%;
+          font-weight: 400;
+          @include adaptive-font(20, 3);
+        }
+      }
+      ._activeSlide {
+        background: #2091f9;
+        height: 100%;
+        top: 0;
+        .slider__btn {
+          background: white;
+          color: #2091f9;
+        }
+      }
+      .slider__btns {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+//pricing
+//contact us
+.body__contact-us {
+  @include adaptive-heigth(1206, 787); // просто балванка временно
+}
+//contact us
+//боди
 //футер
 .footer {
   padding: 1.7% 0 1.7% 0;
