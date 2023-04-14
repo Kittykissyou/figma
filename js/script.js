@@ -18,10 +18,9 @@ const modalStart = () => {
   modWindow.prepend(closeBtn);
   overlay.prepend(modWindow);
   wrapper.prepend(overlay);
-  document.body.style.overflow = 'hidden';
+
   const modalClose = () => {
     overlay.remove();
-    document.body.style.overflow = 'visible';
   };
   if (burger.classList.value == `header__burger burger _burger-active`) {
     burger.classList.toggle('_burger-active');
@@ -161,18 +160,23 @@ for (let i = 0; i < sliderData.length; i++) {
   slide.append(btn);
   if (i == 0) {
     slide.style.left = `-${
-      (parseInt(getComputedStyle(slide).width) /
-        1.2 /
+      (((100 -
+        ((parseInt(getComputedStyle(sliderContainer).width) / 100) * 7.5) /
+          (parseInt(getComputedStyle(slide).width) / 100)) *
+        parseInt(getComputedStyle(slide).width)) /
+        100 /
         parseInt(getComputedStyle(sliderContainer).width)) *
       100
     }%`;
   } else {
     slide.style.left = `${
-      ((parseInt(getComputedStyle(slide.previousElementSibling).left) +
-        parseInt(getComputedStyle(slide.previousElementSibling).width)) /
+      (parseInt(getComputedStyle(slide.previousElementSibling).left) /
         parseInt(getComputedStyle(sliderContainer).width)) *
         100 +
-      10
+      (parseInt(getComputedStyle(slide.previousElementSibling).width) /
+        parseInt(getComputedStyle(sliderContainer).width)) *
+        100 +
+      7.5
     }%`;
     if (
       slide.previousElementSibling.className !==
@@ -185,32 +189,35 @@ for (let i = 0; i < sliderData.length; i++) {
 const slide = document.querySelector('.slider__slide');
 const firstSlide = sliderContainer.lastElementChild.cloneNode(true);
 sliderContainer.prepend(firstSlide);
-firstSlide.style.left = `-${
-  (parseInt(getComputedStyle(firstSlide).width) /
+
+firstSlide.style.left = `${
+  (parseInt(getComputedStyle(firstSlide.nextElementSibling).left) /
     parseInt(getComputedStyle(sliderContainer).width)) *
-  100 *
-  2
+    100 -
+  (parseInt(getComputedStyle(slides[0]).width) /
+    parseInt(getComputedStyle(sliderContainer).width)) *
+    100 -
+  7.5
 }%`;
-console.log(firstSlide.style.left);
+
 const lastSlide =
   sliderContainer.firstElementChild.nextElementSibling.cloneNode(true);
 
 sliderContainer.append(lastSlide);
 lastSlide.style.left = `${
-  (parseInt(getComputedStyle(firstSlide).width) /
+  (parseInt(getComputedStyle(lastSlide.previousElementSibling).left) /
     parseInt(getComputedStyle(sliderContainer).width)) *
-  100 *
-  2.7
+    100 +
+  (parseInt(getComputedStyle(slides[0]).width) /
+    parseInt(getComputedStyle(sliderContainer).width)) *
+    100 +
+  7.5
 }%`;
-console.log(lastSlide.style.left);
+
 let count = 0;
 const moveRight = () => {
-  count =
-    count +
-    (parseInt(getComputedStyle(slides[0]).width) /
-      parseInt(getComputedStyle(sliderContainer).width)) *
-      100 *
-      2;
+  count = count + 110;
+
   const activeSlide = document.querySelector('._activeSlide');
   for (let slide of slides) {
     slide.style.transform = `translateX(${count}%)`;
@@ -220,21 +227,21 @@ const moveRight = () => {
   const newSlide = activeSlide.cloneNode(true);
   sliderContainer.prepend(newSlide);
   newSlide.style.left = `${
-    parseInt(sliderContainer.firstElementChild.nextElementSibling.style.left) -
-    (parseInt(getComputedStyle(sliderContainer.firstElementChild).width) /
+    (parseInt(
+      getComputedStyle(sliderContainer.firstElementChild.nextElementSibling)
+        .left
+    ) /
       parseInt(getComputedStyle(sliderContainer).width)) *
-      100 *
-      1.2
+      100 -
+    (parseInt(getComputedStyle(slides[0]).width) /
+      parseInt(getComputedStyle(sliderContainer).width)) *
+      100 -
+    7.5
   }%`;
   sliderContainer.lastElementChild.remove();
 };
 const moveLeft = () => {
-  count =
-    count -
-    (parseInt(getComputedStyle(slides[0]).width) /
-      parseInt(getComputedStyle(sliderContainer).width)) *
-      100 *
-      2;
+  count = count - 110;
   const activeSlide = document.querySelector('._activeSlide');
   for (let slide of slides) {
     slide.style.transform = `translateX(${count}%)`;
@@ -244,13 +251,16 @@ const moveLeft = () => {
   const newSlide = activeSlide.cloneNode(true);
   sliderContainer.append(newSlide);
   newSlide.style.left = `${
-    parseInt(
-      sliderContainer.lastElementChild.previousElementSibling.style.left
-    ) +
-    (parseInt(getComputedStyle(sliderContainer.lastElementChild).width) /
+    (parseInt(
+      getComputedStyle(sliderContainer.lastElementChild.previousElementSibling)
+        .left
+    ) /
       parseInt(getComputedStyle(sliderContainer).width)) *
-      100 *
-      1.2
+      100 +
+    (parseInt(getComputedStyle(slides[0]).width) /
+      parseInt(getComputedStyle(sliderContainer).width)) *
+      100 +
+    7.5
   }%`;
   sliderContainer.firstElementChild.remove();
 };

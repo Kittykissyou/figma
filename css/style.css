@@ -129,7 +129,7 @@ h6 {
 }
 
 .overlay {
-  position: absolute;
+  position: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -137,14 +137,14 @@ h6 {
       -ms-flex-pack: center;
           justify-content: center;
   z-index: 99;
-  min-height: 100vh;
+  min-height: 100%;
   width: 100vw;
   top: 0;
   background: rgba(0, 0, 0, 0.6);
 }
 
 .mod-window {
-  position: absolute;
+  position: fixed;
   z-index: 100;
   top: 20vh;
   width: 40%;
@@ -561,7 +561,7 @@ h6 {
   height: 80%;
   padding: 2% 0 2% 0;
   top: 10%;
-  width: 40vw;
+  width: 70%;
   background: white;
   border-radius: 1%/2%;
   display: -webkit-box;
