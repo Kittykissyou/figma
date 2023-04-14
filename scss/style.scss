@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   z-index: 99;
-  min-height: 100vh;
+  min-height: 100%;
   width: 100vw;
 
   top: 0;
@@ -322,6 +322,8 @@
       }
 
       .slider__slide {
+        transition: transform 1s;
+        transition: heigth 2s;
         position: absolute;
         height: 80%;
         padding: 2% 0 2% 0;
@@ -376,6 +378,7 @@
           }
         }
         .slider__btn {
+          margin-top: 2%;
           padding: 2% 4%;
           font-weight: 400;
           @include adaptive-font(20, 3);
@@ -391,8 +394,21 @@
         }
       }
       .slider__btns {
+        margin-top: 3%;
         display: flex;
         justify-content: center;
+        button {
+          background: none;
+        }
+
+        .icon-arrow {
+          @include adaptive-font(30, 3);
+          transform: rotate(90deg);
+          color: white;
+        }
+        .slider__left {
+          transform: rotate(-90deg);
+        }
       }
     }
   }

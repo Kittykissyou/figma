@@ -56,3 +56,6 @@
 .icon-close:before {
   content: '\e916';
 }
+.icon-arrow:before {
+  content: '\e909';
+}

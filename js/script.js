@@ -72,53 +72,173 @@ const sliderData = [
     title: 'standart',
     subtitle: 'Organize across all apps by hand',
     price: '10',
+    featureIn: [
+      'Pricing Feature',
+      'Pricing Feature',
+      'Pricing Feature',
+      'Pricing Feature',
+      'Pricing Feature',
+      'Pricing Feature',
+    ],
   },
   {
     title: 'business',
     subtitle: 'Organize across all apps by hand',
     price: '99',
+    featureIn: [
+      'Pricing Feature',
+      'Pricing Feature',
+      'Pricing Feature',
+      'Pricing Feature',
+      'Pricing Feature',
+      'Pricing Feature',
+    ],
   },
   {
     title: 'free',
     subtitle: 'Organize across all apps by hand',
     price: '0',
+    featureIn: [
+      'Pricing Feature',
+      'Pricing Feature',
+      'Pricing Feature',
+      'Pricing Feature',
+      'Pricing Feature',
+      'Pricing Feature',
+    ],
   },
 ];
+
 const sliderContainer = document.querySelector('.slider__container');
 const slides = sliderContainer.children;
-//
-const slide = document.querySelector('.slide');
-slide.style.left = `-${
-  (parseInt(getComputedStyle(slide).width) /
-    1.2 /
-    parseInt(getComputedStyle(sliderContainer).width)) *
-  100
-}%`;
-//
-for (let i = 1; i < sliderData.length; i++) {
-  const slideCopy = slide.cloneNode(true);
-  slideCopy.style.left = '';
-  const slideTitle = slideCopy.querySelector('.slide__title');
-  slideTitle.innerHTML = `${sliderData[i].title}`;
-  const slideSubTitle = slideCopy.querySelector('.slide__subtitle');
-  slideSubTitle.innerHTML = `${sliderData[i].subtitle}`;
-  const slidePrice = slideCopy.querySelector('.slide__num');
-  slidePrice.innerHTML = `${sliderData[i].price}`;
-  sliderContainer.append(slideCopy);
+const lBtn = document.querySelector('.slider__left');
+const rBtn = document.querySelector('.slider__right');
 
-  slideCopy.style.left = `${
-    ((parseInt(getComputedStyle(slideCopy.previousElementSibling).left) +
-      parseInt(getComputedStyle(slideCopy.previousElementSibling).width)) /
-      parseInt(getComputedStyle(sliderContainer).width)) *
-      100 +
-    10
-  }%`;
-  if (
-    slideCopy.previousElementSibling.className !==
-    'slider__slide slide _activeSlide'
-  ) {
-    slideCopy.classList.toggle('_activeSlide');
+for (let i = 0; i < sliderData.length; i++) {
+  const slide = document.createElement('div');
+  slide.classList.add('slider__slide');
+  slide.classList.add('slide');
+  sliderContainer.append(slide);
+  const title = document.createElement('p');
+  title.innerHTML = `${sliderData[i].title}`;
+  title.classList.add('slide__title');
+  slide.append(title);
+  const subtitle = document.createElement('p');
+  subtitle.innerHTML = `${sliderData[i].subtitle}`;
+  subtitle.classList.add('slide__subtitle');
+  slide.append(subtitle);
+  const priceCont = document.createElement('div');
+  priceCont.classList.add('slide__price');
+  slide.append(priceCont);
+  const number = document.createElement('p');
+  number.innerHTML = `${sliderData[i].price}`;
+  number.classList.add('slide__num');
+  priceCont.append(number);
+  const permonth = document.createElement('div');
+  permonth.classList.add('slide__permonth');
+  priceCont.append(permonth);
+  const baks = document.createElement('p');
+  baks.innerHTML = '$';
+  baks.classList.add('slide__baks');
+  permonth.append(baks);
+  const perMonthStr = document.createElement('p');
+  perMonthStr.innerHTML = 'Per Month';
+  perMonthStr.classList.add('slide__per-month');
+  permonth.append(perMonthStr);
+  const features = document.createElement('div');
+  features.classList.add('slide__feature');
+  slide.append(features);
+  for (let j = 0; j < sliderData[i].featureIn.length; j++) {
+    const feature = document.createElement('p');
+    feature.innerHTML = `${sliderData[i].featureIn[j]}`;
+    feature.classList.add('slide__pr-feature');
+    features.append(feature);
+  }
+  const btn = document.createElement('button');
+  btn.innerHTML = 'Order now';
+  btn.classList.add('doc-btn');
+  btn.classList.add('slider__btn');
+  slide.append(btn);
+  if (i == 0) {
+    slide.style.left = `-${
+      (parseInt(getComputedStyle(slide).width) /
+        1.2 /
+        parseInt(getComputedStyle(sliderContainer).width)) *
+      100
+    }%`;
+  } else {
+    slide.style.left = `${
+      ((parseInt(getComputedStyle(slide.previousElementSibling).left) +
+        parseInt(getComputedStyle(slide.previousElementSibling).width)) /
+        parseInt(getComputedStyle(sliderContainer).width)) *
+        100 +
+      10
+    }%`;
+    if (
+      slide.previousElementSibling.className !==
+      'slider__slide slide _activeSlide'
+    ) {
+      slide.classList.toggle('_activeSlide');
+    }
   }
 }
+const slide = document.querySelector('.slider__slide');
+const firstSlide = sliderContainer.lastElementChild.cloneNode(true);
+sliderContainer.prepend(firstSlide);
+firstSlide.style.left = `-${
+  (parseInt(getComputedStyle(firstSlide).width) /
+    parseInt(getComputedStyle(sliderContainer).width)) *
+  100 *
+  2
+}%`;
+const lastSlide =
+  sliderContainer.firstElementChild.nextElementSibling.cloneNode(true);
+
+sliderContainer.append(lastSlide);
+lastSlide.style.left = `${
+  (parseInt(getComputedStyle(firstSlide).width) /
+    parseInt(getComputedStyle(sliderContainer).width)) *
+  100 *
+  2.7
+}%`;
+let count = 0;
+const moveRight = () => {
+  count =
+    count +
+    (parseInt(getComputedStyle(firstSlide).width) /
+      parseInt(getComputedStyle(sliderContainer).width)) *
+      100 *
+      2;
+  const activeSlide = document.querySelector('._activeSlide');
+  for (let slide of slides) {
+    slide.style.transform = `translateX(${count}%)`;
+  }
+  activeSlide.previousElementSibling.classList.add('_activeSlide');
+  activeSlide.classList.remove('_activeSlide');
+  console.log(slides);
+};
+const moveLeft = () => {
+  count =
+    count -
+    (parseInt(getComputedStyle(lastSlide).width) /
+      parseInt(getComputedStyle(sliderContainer).width)) *
+      100 *
+      2;
+  const activeSlide = document.querySelector('._activeSlide');
+  for (let slide of slides) {
+    slide.style.transform = `translateX(${count}%)`;
+  }
+
+  activeSlide.nextElementSibling.classList.add('_activeSlide');
+  activeSlide.classList.remove('_activeSlide');
+  const newSlide = activeSlide.cloneNode(true);
+
+  sliderContainer.append(newSlide);
+  newSlide.style.left = `${parseInt(
+    sliderContainer.lastElementChild.previousElementSibling.style.left
+  )}`;
+};
+rBtn.addEventListener('click', moveRight);
+lBtn.addEventListener('click', moveLeft);
 
 //слайдер

@@ -553,6 +553,10 @@ h6 {
   margin: 0 auto;
 }
 .body__pricing .pricing__content .pricing__slider .slider__slide {
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
   position: absolute;
   height: 80%;
   padding: 2% 0 2% 0;
@@ -647,6 +651,7 @@ h6 {
   );
 }
 .body__pricing .pricing__content .pricing__slider .slider__slide .slider__btn {
+  margin-top: 2%;
   padding: 2% 4%;
   font-weight: 400;
   font-size: calc(
@@ -663,12 +668,28 @@ h6 {
   color: #2091f9;
 }
 .body__pricing .pricing__content .pricing__slider .slider__btns {
+  margin-top: 3%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+.body__pricing .pricing__content .pricing__slider .slider__btns button {
+  background: none;
+}
+.body__pricing .pricing__content .pricing__slider .slider__btns .icon-arrow {
+  font-size: calc(
+    3px + 27 * ((100vw - 320px) / 1457)
+  );
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  color: white;
+}
+.body__pricing .pricing__content .pricing__slider .slider__btns .slider__left {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
 }
 
 .body__contact-us {
