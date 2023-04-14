@@ -191,6 +191,7 @@ firstSlide.style.left = `-${
   100 *
   2
 }%`;
+console.log(firstSlide.style.left);
 const lastSlide =
   sliderContainer.firstElementChild.nextElementSibling.cloneNode(true);
 
@@ -201,11 +202,12 @@ lastSlide.style.left = `${
   100 *
   2.7
 }%`;
+console.log(lastSlide.style.left);
 let count = 0;
 const moveRight = () => {
   count =
     count +
-    (parseInt(getComputedStyle(firstSlide).width) /
+    (parseInt(getComputedStyle(slides[0]).width) /
       parseInt(getComputedStyle(sliderContainer).width)) *
       100 *
       2;
@@ -216,21 +218,20 @@ const moveRight = () => {
   activeSlide.previousElementSibling.classList.add('_activeSlide');
   activeSlide.classList.remove('_activeSlide');
   const newSlide = activeSlide.cloneNode(true);
-  newSlide.style.left = `-${
-    parseInt(sliderContainer.lastElementChild.style.left) +
-    (parseInt(getComputedStyle(activeSlide).width) /
+  sliderContainer.prepend(newSlide);
+  newSlide.style.left = `${
+    parseInt(sliderContainer.firstElementChild.nextElementSibling.style.left) -
+    (parseInt(getComputedStyle(sliderContainer.firstElementChild).width) /
       parseInt(getComputedStyle(sliderContainer).width)) *
       100 *
       1.2
   }%`;
-
-  sliderContainer.prepend(newSlide);
   sliderContainer.lastElementChild.remove();
 };
 const moveLeft = () => {
   count =
     count -
-    (parseInt(getComputedStyle(lastSlide).width) /
+    (parseInt(getComputedStyle(slides[0]).width) /
       parseInt(getComputedStyle(sliderContainer).width)) *
       100 *
       2;
@@ -241,13 +242,12 @@ const moveLeft = () => {
   activeSlide.nextElementSibling.classList.add('_activeSlide');
   activeSlide.classList.remove('_activeSlide');
   const newSlide = activeSlide.cloneNode(true);
-
   sliderContainer.append(newSlide);
   newSlide.style.left = `${
     parseInt(
       sliderContainer.lastElementChild.previousElementSibling.style.left
     ) +
-    (parseInt(getComputedStyle(activeSlide).width) /
+    (parseInt(getComputedStyle(sliderContainer.lastElementChild).width) /
       parseInt(getComputedStyle(sliderContainer).width)) *
       100 *
       1.2
