@@ -100,6 +100,17 @@
   }
   .block-header__subtitle {
     @include adaptive-font(28, 12);
+    .small {
+      display: none;
+    }
+    @media (max-width: 760px) {
+      .small {
+        display: block;
+      }
+      span {
+        display: none;
+      }
+    }
   }
 }
 //реюз
@@ -316,6 +327,9 @@
 
       .slider__container {
         @include adaptive-heigth(335, 50);
+        @media (max-width: 760px) {
+          height: 450px;
+        }
         width: 100%;
         position: relative;
         margin: 0 auto;
@@ -323,12 +337,15 @@
 
       .slider__slide {
         transition: transform 1s;
-
         position: absolute;
         height: 80%;
+        width: 70%;
+        @media (max-width: 760px) {
+          height: 370px;
+          justify-content: space-around;
+        }
         padding: 2% 0 2% 0;
         top: 10%;
-        width: 70%;
         background: white;
         border-radius: 1%/2%;
         @include flex-column;
@@ -336,12 +353,22 @@
         align-items: center;
         .slide__title {
           @include adaptive-font(20, 5);
+          @media (max-width: 760px) {
+            font-size: 20px;
+            height: auto;
+          }
           font-weight: 700;
           @include adaptive-heigth(28, 14);
           text-transform: uppercase;
         }
         .slide__subtitle {
           @include adaptive-font(16, 4);
+          @media (max-width: 760px) {
+            font-size: 16px;
+            height: auto;
+            width: 144px;
+            text-align: center;
+          }
           font-weight: 400;
           @include adaptive-heigth(23, 12);
         }
@@ -350,6 +377,9 @@
           align-items: center;
           .slide__num {
             @include adaptive-font(74, 19);
+            @media (max-width: 760px) {
+              font-size: 74px;
+            }
             font-weight: 700;
           }
           .slide__permonth {
@@ -359,10 +389,16 @@
 
             .slide__baks {
               @include adaptive-font(20, 5);
+              @media (max-width: 760px) {
+                font-size: 20px;
+              }
               font-weight: 700;
             }
             .slide__per-month {
               @include adaptive-font(16, 4);
+              @media (max-width: 760px) {
+                font-size: 16px;
+              }
 
               font-weight: 400;
             }
@@ -370,11 +406,19 @@
         }
         .slide__feature {
           display: flex;
+          @media (max-width: 760px) {
+            @include flex-column;
+            height: 180px;
+          }
           justify-content: space-between;
+          align-items: center;
           width: 90%;
           .slide__pr-feature {
             font-weight: 400;
             @include adaptive-font(12, 5);
+            @media (max-width: 760px) {
+              font-size: 15px;
+            }
           }
         }
         .slider__btn {
@@ -382,19 +426,38 @@
           padding: 2% 4%;
           font-weight: 400;
           @include adaptive-font(20, 3);
+          @media (max-width: 760px) {
+            font-size: 20px;
+          }
         }
       }
+
       ._activeSlide {
-        background: #2091f9;
+        animation: colorChange 0.5s linear forwards;
+
         height: 100%;
         top: 0;
+        @media (max-width: 760px) {
+          height: 450px;
+        }
         .slider__btn {
           background: white;
           color: #2091f9;
         }
       }
+      @keyframes colorChange {
+        from {
+          background: white;
+        }
+        to {
+          background: #2091f9;
+        }
+      }
       .slider__btns {
         margin-top: 3%;
+        @media (max-width: 760px) {
+          margin-top: 6%;
+        }
         display: flex;
         justify-content: center;
         button {
@@ -403,6 +466,9 @@
 
         .icon-arrow {
           @include adaptive-font(30, 3);
+          @media (max-width: 760px) {
+            @include adaptive-font(10, 24);
+          }
           transform: rotate(90deg);
           color: white;
         }
