@@ -802,6 +802,26 @@ h6 {
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
 }
+.body__pricing .pricing__content .pricing__slider .slider__steps {
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.body__pricing .pricing__content .pricing__slider .slider__steps .slider__dot {
+  width: 20%;
+  height: 0px;
+  border: 3px solid #2091f9;
+  border-radius: 3px;
+}
+.body__pricing .pricing__content .pricing__slider .slider__steps ._active {
+  border-color: lightgray;
+}
 
 .body__contact-us {
   height: calc(

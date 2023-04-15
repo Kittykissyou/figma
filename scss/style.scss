@@ -476,6 +476,21 @@
           transform: rotate(-90deg);
         }
       }
+      .slider__steps {
+        width: 30%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .slider__dot {
+          width: 20%;
+          height: 0px;
+          border: 3px solid #2091f9;
+          border-radius: 3px;
+        }
+        ._active {
+          border-color: lightgray;
+        }
+      }
     }
   }
 }

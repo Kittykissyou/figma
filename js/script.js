@@ -215,9 +215,28 @@ lastSlide.style.left = `${
 }%`;
 
 let count = 0;
+let stepCount = 0;
+const steps = document.querySelector('.slider__steps');
+for (let i = 0; i < sliderData.length; i++) {
+  const dot = document.createElement('div');
+  dot.classList.add('slider__dot');
+  if (i == 0) {
+    dot.classList.add('_active');
+  }
+  steps.append(dot);
+}
 const moveRight = () => {
   count = count + 110;
-
+  stepCount++;
+  const activeDot = steps.querySelector('._active');
+  if (stepCount == steps.children.length) {
+    activeDot.classList.remove('_active');
+    steps.firstChild.classList.add('_active');
+    stepCount = 0;
+  } else {
+    activeDot.nextElementSibling.classList.add('_active');
+    activeDot.classList.remove('_active');
+  }
   const activeSlide = document.querySelector('._activeSlide');
   for (let slide of slides) {
     slide.style.transform = `translateX(${count}%)`;
@@ -242,6 +261,16 @@ const moveRight = () => {
 };
 const moveLeft = () => {
   count = count - 110;
+  stepCount--;
+  const activeDot = steps.querySelector('._active');
+  if (stepCount == -1) {
+    steps.lastElementChild.classList.add('_active');
+    activeDot.classList.remove('_active');
+    stepCount = sliderData.length - 1;
+  } else {
+    activeDot.previousElementSibling.classList.add('_active');
+    activeDot.classList.remove('_active');
+  }
   const activeSlide = document.querySelector('._activeSlide');
   for (let slide of slides) {
     slide.style.transform = `translateX(${count}%)`;
