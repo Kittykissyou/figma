@@ -513,8 +513,11 @@
     align-items: center;
     .contact-us-message {
       text-align: center;
-      font-weight: 400;
+      font-weight: 700;
       @include adaptive-font(36, 8);
+      span {
+        color: #2091f9;
+      }
     }
     .contact-us__form {
       padding: 12%;
@@ -572,6 +575,37 @@
         @include adaptive-font(20, 12);
         border-radius: 30%/100%;
       }
+    }
+    .contact-us__info {
+      background: black;
+    }
+    .contact-us__contacts {
+      display: flex;
+    }
+
+    .contacts__column {
+      display: flex;
+      background: black;
+    }
+    .icon-geo {
+    }
+    .contacts__txt {
+    }
+    .icon-phone {
+    }
+    .icon-mail {
+    }
+    .contact-us__map {
+    }
+    .socials {
+    }
+    .contact-us__socials {
+    }
+    .icon-twitter {
+    }
+    .icon-facebook {
+    }
+    .icon-linkedin {
     }
   }
 }

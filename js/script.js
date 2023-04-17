@@ -300,22 +300,23 @@ lBtn.addEventListener('click', moveLeft);
 //форма
 const submitFormBtn = document.querySelector('.form__btn');
 const submitForm = (event) => {
+  event.preventDefault();
   const inputs = document.getElementsByTagName('input');
   const textArea = document.getElementsByTagName('textarea');
   const form = document.querySelector('form');
-  const message = document.querySelector('message');
-  event.preventDefault();
+
   for (let i = 0; i < inputs.length; i++) {
     if (inputs[i].value.length == 0 || textArea[0].value.length == 0) {
       textArea[0].classList.add('_form__error');
       textArea[0].placeholder = 'this area must be filled';
       inputs[i].classList.add('_form__error');
       inputs[i].placeholder = 'this area must be filled';
+    } else {
+      form.style.justifyContent = 'center';
+      form.innerHTML =
+        '<p class="contact-us-message"><span>Thanks!</span><br/> We are call you letter</p>';
     }
   }
-
-  form.innerHTML =
-    '<p class="contact-us-message">Thanks!<br/> We are call you letter</p>';
 };
 
 submitFormBtn.addEventListener('click', submitForm);

@@ -851,10 +851,13 @@ h6 {
 }
 .body__contact-us .contact-us__form-container .contact-us-message {
   text-align: center;
-  font-weight: 400;
+  font-weight: 700;
   font-size: calc(
     8px + 28 * ((100vw - 320px) / 1457)
   );
+}
+.body__contact-us .contact-us__form-container .contact-us-message span {
+  color: #2091f9;
 }
 .body__contact-us .contact-us__form-container .contact-us__form {
   padding: 12%;
@@ -950,7 +953,20 @@ h6 {
   );
   border-radius: 30%/100%;
 }
-
+.body__contact-us .contact-us__form-container .contact-us__info {
+  background: black;
+}
+.body__contact-us .contact-us__form-container .contact-us__contacts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.body__contact-us .contact-us__form-container .contacts__column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: black;
+}
 .footer {
   padding: 5% 0 5% 0;
   background: #252b42;
