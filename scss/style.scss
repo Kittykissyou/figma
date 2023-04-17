@@ -498,13 +498,88 @@
 //pricing
 //contact us
 .body__contact-us {
-  @include adaptive-heigth(1206, 787); // просто балванка временно
+  @include adaptive-heigth(1206, 300);
+  padding: 6% 0 6% 0;
+  ._contact-us {
+    color: black;
+  }
+  .contact-us__content {
+    display: flex;
+    padding-top: 4%;
+  }
+  .contact-us__form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .contact-us-message {
+      text-align: center;
+      font-weight: 400;
+      @include adaptive-font(36, 8);
+    }
+    .contact-us__form {
+      padding: 12%;
+      @include flex-column;
+      align-items: center;
+      justify-content: space-between;
+      @include adaptive-position(width, 25);
+      @include adaptive-heigth(669, 230);
+      border: 1px solid #dddddd;
+      border-radius: 3%/3%;
+      box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+      .form__title {
+        @include adaptive-font(20, 12);
+        font-weight: 700;
+      }
+      input {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        @include adaptive-position(width, 20);
+        @include adaptive-font(15, 8);
+        padding: 6% 6%;
+        background: #f5f5f5;
+        border-radius: 11%/100%;
+      }
+
+      .form__message {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        @include adaptive-position(width, 20);
+        @include adaptive-font(15, 8);
+        padding: 6% 6%;
+        background: #f5f5f5;
+        border-radius: 11%/22%;
+        @include adaptive-heigth(193, 80);
+      }
+
+      ._form__error {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        @include adaptive-position(width, 20);
+        @include adaptive-font(15, 8);
+        padding: 6% 6%;
+        background: #f5f5f5;
+        border-radius: 11%/100%;
+      }
+      ._form__error::placeholder {
+        color: red;
+      }
+      .form__btn {
+        align-self: start;
+        padding: 5% 12%;
+        @include adaptive-font(20, 12);
+        border-radius: 30%/100%;
+      }
+    }
+  }
 }
 //contact us
 //боди
 //футер
 .footer {
-  padding: 1.7% 0 1.7% 0;
+  padding: 5% 0 5% 0;
   background: #252b42;
   display: flex;
   @media (max-width: 760px) {
