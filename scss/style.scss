@@ -321,7 +321,16 @@
   background: #252b42;
 
   .pricing__content {
-    padding: 5.5% 0 5.5% 0;
+    padding: 5.5% 0;
+    @media (max-width: 760px) {
+      padding: 12% 0;
+    }
+    .block-header__title {
+      font-size: 48px;
+    }
+    .block-header__subtitle {
+      font-size: 28px;
+    }
     .pricing__slider {
       padding: 7% 0 0 0;
 
@@ -499,14 +508,30 @@
 //contact us
 .body__contact-us {
   @include adaptive-heigth(1206, 300);
-  padding: 6% 0 6% 0;
+  padding: 6% 0;
+  @media (max-width: 760px) {
+    height: 1200px;
+    padding: 12% 0;
+  }
   ._contact-us {
     color: black;
+    @media (max-width: 760px) {
+      .block-header__title {
+        font-size: 48px;
+      }
+      .block-header__subtitle {
+        font-size: 28px;
+      }
+    }
   }
   .contact-us__content {
     display: flex;
     justify-content: space-between;
-    padding-top: 4%;
+    padding-top: 8%;
+    @media (max-width: 760px) {
+      flex-direction: column;
+      padding-top: 10%;
+    }
   }
   .contact-us__form-container {
     display: flex;
@@ -530,9 +555,24 @@
       border: 1px solid #dddddd;
       border-radius: 3%/3%;
       box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+      @media (max-width: 760px) {
+        width: 90%;
+        height: 600px;
+        padding: 6% 6%;
+        justify-content: space-around;
+      }
+      @media (max-width: 500px) {
+        width: 90%;
+        height: 600px;
+        padding: 13% 6%;
+        justify-content: space-around;
+      }
       .form__title {
         @include adaptive-font(20, 12);
         font-weight: 700;
+        @media (max-width: 760px) {
+          font-size: 20px;
+        }
       }
       input {
         font-family: 'Roboto';
@@ -543,6 +583,11 @@
         padding: 6% 6%;
         background: #f5f5f5;
         border-radius: 11%/100%;
+        @media (max-width: 760px) {
+          width: 100%;
+          height: 54px;
+          font-size: 15px;
+        }
       }
 
       .form__message {
@@ -555,6 +600,11 @@
         background: #f5f5f5;
         border-radius: 11%/22%;
         @include adaptive-heigth(193, 80);
+        @media (max-width: 760px) {
+          width: 100%;
+          height: 193px;
+          font-size: 15px;
+        }
       }
 
       ._form__error {
@@ -566,6 +616,19 @@
         padding: 6% 6%;
         background: #f5f5f5;
         border-radius: 11%/100%;
+        @media (max-width: 760px) {
+          width: 100%;
+          height: 54px;
+          font-size: 15px;
+        }
+      }
+      textarea._form__error {
+        @media (max-width: 760px) {
+          width: 100%;
+          height: 193px;
+          font-size: 15px;
+          border-radius: 11%/22%;
+        }
       }
       ._form__error::placeholder {
         color: red;
@@ -584,24 +647,52 @@
     @include flex-column;
     justify-content: center;
     align-items: center;
-    .contact-us__contacts {
+    @media (max-width: 760px) {
       width: 100%;
+      height: 319px;
+    }
+    .contact-us__contacts {
+      width: 90%;
       display: flex;
       justify-content: space-around;
+      @media (max-width: 760px) {
+        flex-direction: column;
+        gap: 20px;
+      }
       .contacts__column {
         @include flex-column;
         align-items: center;
-
+        @media (max-width: 760px) {
+          flex-direction: row;
+        }
         .contacts__txt {
           text-align: center;
           font-weight: 400;
           @include adaptive-font(16, 6);
           color: #374754;
+          @media (max-width: 760px) {
+            font-size: 16px;
+            br {
+              display: none;
+            }
+          }
+          @media (max-width: 646px) {
+            text-align: start;
+            br {
+              display: block;
+            }
+          }
         }
         ._icon {
           color: #2091f9;
           @include adaptive-font(32, 12);
           margin-bottom: 5%;
+          @media (max-width: 760px) {
+            margin-bottom: 0%;
+            margin-right: 2%;
+            font-size: 32px;
+            text-align: center;
+          }
         }
       }
     }
@@ -611,11 +702,23 @@
       height: 70%;
       display: flex;
       justify-content: center;
+      @media (max-width: 760px) {
+        display: none;
+      }
     }
     .contact-us__socials {
+      @media (max-width: 760px) {
+        padding-top: 10%;
+        width: 100%;
+        justify-content: center;
+        gap: 40px;
+      }
       a {
         @include adaptive-font(33, 12);
         color: #2091f9;
+        @media (max-width: 760px) {
+          font-size: 32px;
+        }
       }
     }
   }
