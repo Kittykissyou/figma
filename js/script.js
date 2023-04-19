@@ -321,3 +321,21 @@ const submitForm = (event) => {
 
 submitFormBtn.addEventListener('click', submitForm);
 //форма
+//партнерс
+const partners = document.querySelector('.partners__content');
+
+async function getImg() {
+  const url = await fetch(
+    'https://jsonplaceholder.typicode.com/albums/1/photos'
+  );
+  const result = await url.json();
+  for (let i = 0; i < 8; i++) {
+    let imgUrl = result[i].url;
+    const img = document.createElement('img');
+    img.src = `${imgUrl}`;
+    img.classList.add('partners__img');
+    partners.prepend(img);
+  }
+}
+getImg();
+//партнерс
