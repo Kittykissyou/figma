@@ -1,3 +1,27 @@
+import axios from 'axios';
+let TBconfig = {
+  method: 'get',
+  maxBodyLength: Infinity,
+  url: 'https://api.binance.com/sapi/v1/capital/config/getall?timestamp=1687332404014&signature=0f7ef653115fdacc1754317a0fdad1dbd5046472313abf9011030e5d8f7f4b1b',
+  headers: {
+    'Content-Type': 'application/json',
+    'X-MBX-APIKEY':
+      'GptpQXcqzlVVO321uxW7aTElajdvbYR66OJ5X8ssozcomDBkrXgJKpUPICLWskCq',
+  },
+};
+
+axios
+  .request(TBconfig)
+  .then((response) => {
+    console.log(Number(response.data.filter((el) => el.coin == 'BTC')[0].free));
+    console.log(
+      Number(response.data.filter((el) => el.coin == 'USDT')[0].free)
+    );
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
 // модальное окно
 const wrapper = document.querySelector('.wrapper');
 const headBtn = document.querySelector('.head-btn');
@@ -63,6 +87,7 @@ const burgerTrans = () => {
     headerHead.lastElementChild.remove();
   }
 };
+
 burger.addEventListener('click', burgerTrans);
 // бургер
 // слайдер
